@@ -7,19 +7,44 @@ const string token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMiIsIm5iZ
 
 ApiClient.BearerToken = token;
 
-var result = await ApiClient.GetSample(EChallengeTrack.A, EChallengeDifficulty.Hard);
+var result = await ApiClient.GetPuzzle(EChallengeTrack.A, EChallengeDifficulty.Hard);
 var currentRoom = await result.Content!.ReadFromJsonAsync<Room>();
 
 var wrongDoors = new Dictionary<int, List<int>>();
+var correctDoors = new Dictionary<int, int>();
 
 while (!currentRoom!.finished)
 {
+    var currentRoomNr = currentRoom.roomNr;
     var door = 0;
+    while (wrongDoors.ContainsKey(currentRoomNr) && wrongDoors[currentRoomNr].Contains(door))
+    {
+        door++;
+    }
+    
+    if (correctDoors.ContainsKey(currentRoomNr))
+        door = correctDoors[currentRoomNr];
 
-    var response = await ApiClient.PostSample(EChallengeTrack.A, EChallengeDifficulty.Hard, currentRoom.doors[door]);
+    Console.WriteLine($"{currentRoomNr} - {door}");
+
+    var response = await ApiClient.PostPuzzle(EChallengeTrack.A, EChallengeDifficulty.Hard, currentRoom.doors[door]);
     currentRoom = await response.Content!.ReadFromJsonAsync<Room>();
 
-    if (currentRoom.finished)
+    if (currentRoom!.roomNr == 1)
+    {
+        if (wrongDoors.ContainsKey(currentRoomNr))
+        {
+            wrongDoors[currentRoomNr].Add(door);
+        }
+        else
+        {
+            wrongDoors.Add(currentRoomNr, new List<int> { door });
+        }
+    } else if (!correctDoors.ContainsKey(currentRoomNr)) {
+        correctDoors.Add(currentRoomNr, door);
+    }
+
+    if (currentRoom!.finished)
         break;
 }
 
