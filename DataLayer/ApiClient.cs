@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataLayer.Enums;
 
-namespace DataLayer
-{
-    internal class ApiClient
-    {
-    }
+namespace DataLayer;
+
+public class ApiClient {
+    
+    private const string BaseUrl = "https://app-htf-2022.azurewebsites.net/api/path";
 }
