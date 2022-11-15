@@ -38,7 +38,7 @@ public class ApiClient {
         var client = new HttpClient();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", BearerToken);
         var response = await client.GetAsync(uri);
-        var content = await response.Content.ReadAsStringAsync();
+        var content = response.Content;
         return new ApiResponse {
             StatusCode = response.StatusCode,
             Content = content
@@ -50,7 +50,7 @@ public class ApiClient {
         var client = new HttpClient();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", BearerToken);
         var response = await client.PostAsync(uri, new StringContent(input));
-        var content = await response.Content.ReadAsStringAsync();
+        var content = response.Content;
         return new ApiResponse {
             StatusCode = response.StatusCode,
             Content = content
