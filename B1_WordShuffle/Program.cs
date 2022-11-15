@@ -1,13 +1,18 @@
-﻿List<string> wordList = new List<string>
-{
-    "cosuuscsshocsuu",
-    "ucsssscucuoopsu",
-    "assssapttt"
-};
+﻿using System.Net.Http.Json;
+using DataLayer;
+using DataLayer.Enums;
+
+Console.Write("Authentication token: ");
+var token = Console.ReadLine();
+
+ApiClient.BearerToken = token;
+
+var response = await ApiClient.GetSample(EChallengeTrack.B, EChallengeDifficulty.Easy);
+var wordList = await response.Content!.ReadFromJsonAsync<List<string>>();
 
 string answer = "";
 
-for (int w = 0; w < wordList.Count; w++)
+for (int w = 0; w < wordList!.Count; w++)
 {
     char[] unique = new char[wordList[w].Length];
     SortedDictionary<int, string> result = new SortedDictionary<int, string>();
@@ -47,3 +52,5 @@ for (int w = 0; w < wordList.Count; w++)
 }
 
 Console.WriteLine(answer.Trim());
+
+await ApiClient.PostSample(EChallengeTrack.B, EChallengeDifficulty.Easy, answer.Trim());

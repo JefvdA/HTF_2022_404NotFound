@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using DataLayer.Enums;
 
 namespace DataLayer;
@@ -15,7 +16,7 @@ public class ApiClient {
         return response;
     }
 
-    public static async Task<ApiResponse> PostSample(EChallengeTrack track, EChallengeDifficulty difficulty, string input) {
+    public static async Task<ApiResponse> PostSample<T>(EChallengeTrack track, EChallengeDifficulty difficulty, T input) {
         var uri = GenerateUri(track, difficulty, EChallengeType.Sample);
         var response = await PostAsync(uri, input);
         return response;
@@ -27,7 +28,7 @@ public class ApiClient {
         return response;
     }
 
-    public static async Task<ApiResponse> PostPuzzle(EChallengeTrack track, EChallengeDifficulty difficulty, string input) {
+    public static async Task<ApiResponse> PostPuzzle<T>(EChallengeTrack track, EChallengeDifficulty difficulty, T input) {
         var uri = GenerateUri(track, difficulty, EChallengeType.Puzzle);
         var response = await PostAsync(uri, input);
         return response;
@@ -45,11 +46,11 @@ public class ApiClient {
         };
     }
     
-    private static async Task<ApiResponse> PostAsync(string uri, string input)
+    private static async Task<ApiResponse> PostAsync<T>(string uri, T input)
     {
         var client = new HttpClient();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", BearerToken);
-        var response = await client.PostAsync(uri, new StringContent(input));
+        var response = await client.PostAsJsonAsync<T>(uri, input);
         var content = response.Content;
         return new ApiResponse {
             StatusCode = response.StatusCode,
