@@ -2,12 +2,9 @@
 using DataLayer;
 using DataLayer.Enums;
 
-Console.Write("Authentication token: ");
-var token = Console.ReadLine();
+ApiClient.BearerToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMiIsIm5iZiI6MTY2ODUwMzE3NywiZXhwIjoxNjY4NTg5NTc3LCJpYXQiOjE2Njg1MDMxNzd9.k2hY9b8QAfoPkqwhut0O3wIR1TZPNM89ryPW53n6lHq68pdnNBSLBLWu6i-IT5Wjs9NAbsq7L5tWXlvnS663LA";
 
-ApiClient.BearerToken = token;
-
-var response = await ApiClient.GetSample(EChallengeTrack.B, EChallengeDifficulty.Easy);
+var response = await ApiClient.GetPuzzle(EChallengeTrack.B, EChallengeDifficulty.Easy);
 var wordList = await response.Content!.ReadFromJsonAsync<List<string>>();
 
 string answer = "";
@@ -51,6 +48,4 @@ for (int w = 0; w < wordList!.Count; w++)
     answer += " ";
 }
 
-Console.WriteLine(answer.Trim());
-
-await ApiClient.PostSample(EChallengeTrack.B, EChallengeDifficulty.Easy, answer.Trim());
+Console.WriteLine(await ApiClient.PostPuzzle(EChallengeTrack.B, EChallengeDifficulty.Easy, answer.Trim()));
