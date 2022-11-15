@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A1_RomanNumerals", "A1_Roma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2_BattleSimulator", "A2_BattleSimulator\A2_BattleSimulator.csproj", "{AF082038-3B33-4762-AA1E-F5D2067D9E87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A3_Maze", "A3_Maze\A3_Maze.csproj", "{249ECB25-7698-4A77-88C6-42099345C433}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AF082038-3B33-4762-AA1E-F5D2067D9E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF082038-3B33-4762-AA1E-F5D2067D9E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF082038-3B33-4762-AA1E-F5D2067D9E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249ECB25-7698-4A77-88C6-42099345C433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249ECB25-7698-4A77-88C6-42099345C433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249ECB25-7698-4A77-88C6-42099345C433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249ECB25-7698-4A77-88C6-42099345C433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
