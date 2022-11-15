@@ -10,15 +10,13 @@ ApiClient.BearerToken = token;
 var result = await ApiClient.GetSample(EChallengeTrack.A, EChallengeDifficulty.Hard);
 var currentRoom = await result.Content!.ReadFromJsonAsync<Room>();
 
+var wrongDoors = new Dictionary<int, List<int>>();
+
 while (!currentRoom!.finished)
 {
-    Console.WriteLine($"You are in room {currentRoom.roomNr}");
-    Console.WriteLine($"You can go to rooms {string.Join(", ", currentRoom.doors)}");
-    Console.Write("Where do you want to go? ");
-    var door = int.Parse(Console.ReadLine()!);
-    var index = currentRoom.doors.FindIndex(d => d == door);
-    
-    var response = await ApiClient.PostSample(EChallengeTrack.A, EChallengeDifficulty.Hard, currentRoom.doors[index]);
+    var door = 0;
+
+    var response = await ApiClient.PostSample(EChallengeTrack.A, EChallengeDifficulty.Hard, currentRoom.doors[door]);
     currentRoom = await response.Content!.ReadFromJsonAsync<Room>();
 
     if (currentRoom.finished)
