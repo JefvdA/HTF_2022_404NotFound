@@ -48,4 +48,4 @@ for (int w = 0; w < wordList!.Count; w++)
     answer += " ";
 }
 
-Console.WriteLine(await ApiClient.PostPuzzle(EChallengeTrack.B, EChallengeDifficulty.Easy, answer.Trim()));
+await ApiClient.PostPuzzle(EChallengeTrack.B, EChallengeDifficulty.Easy, answer.Trim());
