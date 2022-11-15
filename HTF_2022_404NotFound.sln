@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B1_WordShuffle", "B1_WordSh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B2_OverlappingText", "B2_OverlappingText\B2_OverlappingText.csproj", "{8EDD38A0-6314-4702-866B-880350E5E889}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B3_CeaserSearch", "B3_CeaserSearch\B3_CeaserSearch.csproj", "{D6432544-DEEC-4E9E-B523-0EE025170C9C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{01E921A3-7A08-4B30-8DE8-528AC3352947}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A1_RomanNumerals", "A1_RomanNumerals\A1_RomanNumerals.csproj", "{D6302B6A-CA9D-4DCB-83C2-78D0CA2E316A}"
@@ -29,10 +27,6 @@ Global
 		{8EDD38A0-6314-4702-866B-880350E5E889}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EDD38A0-6314-4702-866B-880350E5E889}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EDD38A0-6314-4702-866B-880350E5E889}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6432544-DEEC-4E9E-B523-0EE025170C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6432544-DEEC-4E9E-B523-0EE025170C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6432544-DEEC-4E9E-B523-0EE025170C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6432544-DEEC-4E9E-B523-0EE025170C9C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01E921A3-7A08-4B30-8DE8-528AC3352947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01E921A3-7A08-4B30-8DE8-528AC3352947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01E921A3-7A08-4B30-8DE8-528AC3352947}.Release|Any CPU.ActiveCfg = Release|Any CPU
