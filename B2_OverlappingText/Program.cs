@@ -8,20 +8,29 @@ ApiClient.BearerToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMiIsIm
 var response = await ApiClient.GetPuzzle(EChallengeTrack.B, EChallengeDifficulty.Medium);
 var sentenceList = await response.Content!.ReadFromJsonAsync<List<string>>();
 
+// Get shortest sentence in the list
 int minLength = sentenceList.Min(s => s.Length);
+
+// Get the string value of the shortest sentence in the list
 string shorttest = sentenceList.FirstOrDefault(x => x.Length == minLength);
 
 string result = "";
+
+// Loop through each character in the shortest sentence
 for (int i = 0; i < minLength; i++)
 {
     string allChars = "";
+    // Loop through each sentence in the list
     for (int j = 0; j < sentenceList.Count; j++)
     {
+        // Add the character at the current index to the allChars string
         allChars += sentenceList[j][i];
     }
 
+    // Get the most common character in the allChars string
     if (allChars.Distinct().Count() == 1)
     {
+        // If all characters are the same, add the character to the result string
         result += allChars[0];
     }
 }
