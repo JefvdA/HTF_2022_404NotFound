@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class HttpClient
+    internal class ApiClient
     {
     }
 }
